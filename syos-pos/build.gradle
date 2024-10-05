@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group = 'com.syospos'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'org.apache.taglibs:taglibs-standard-impl:1.2.5'
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.mockito:mockito-core:3.11.2'
+}
+
+tasks.named('jar') {
+    enabled = false
+}
+
+test {
+    useJUnitPlatform()
+}
